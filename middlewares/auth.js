@@ -9,13 +9,13 @@ exports.isAuth = async (req, res, next) => {
             const decode = jwt.verify(token, process.env.JWT_SECRET)    
             const user = await User.findById(decode.userId)
             if(!user){
-            return res.json({success: false, message: 'Unauthorized access!'})
+            return res.status(401).json({success: false, message: 'Unauthorized access!'})
         }
             req.user = user
             next()
         } catch (error) {
             if(error.name === 'JsonWebTokenError'){
-                return res.json({success: false, message: 'Unauthorized access!'})
+                return res.status(401).json({success: false, message: 'Unauthorized access!'})
             }
             else if(error.name === 'TokenExpiredError'){
                 return res.json({success: false, message: 'Session expired, try sign in.'})
