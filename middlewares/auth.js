@@ -11,7 +11,8 @@ exports.isAuth = async (req, res, next) => {
             if(!user){
             return res.json({success: false, message: 'Unauthorized access!'})
         }
-            
+            req.user = user
+            next()
         } catch (error) {
             if(error.name === 'JsonWebTokenError'){
                 return res.json({success: false, message: 'Unauthorized access!'})
@@ -21,6 +22,7 @@ exports.isAuth = async (req, res, next) => {
             }
              res.json({success: false, message: 'Internal Server Error.'})
         }
+    
         
     }else{
         res.json({success: false, message: 'unauthorized access!'})
