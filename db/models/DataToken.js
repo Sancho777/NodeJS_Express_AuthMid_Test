@@ -6,4 +6,4 @@ const DataTokenSchema = new mongoose.Schema({
     timestamp: { type: Number, default: 0 },
 })
 
-module.exports = mongoose.model('LimitToken', DataTokenSchema);
+module.exports = mongoose.model('LimitToken', DataTokenSchema)

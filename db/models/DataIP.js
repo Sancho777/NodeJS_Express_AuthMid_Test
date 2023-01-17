@@ -6,4 +6,4 @@ const DataIPSchema = new mongoose.Schema({
     timestamp: { type: Number, default: 0 },
 })
 
-module.exports = mongoose.model('LimitIP', DataIPSchema);
+module.exports = mongoose.model('LimitIP', DataIPSchema)
