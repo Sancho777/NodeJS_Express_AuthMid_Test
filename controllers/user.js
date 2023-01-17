@@ -17,7 +17,7 @@ exports.createUser = async (req, res) => {
 
 exports.userSignIn = async (req, res) => {
     const { email, password } = req.body
-    const user = await DB.getUser(email)
+    const user = await DB.getUserByEmail(email)
 
     if (!user) return res.json(
         { success: false, message: 'user not found with the given email!' })

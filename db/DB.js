@@ -33,8 +33,12 @@ class DB {
         else return await IPModel.findByIdAndUpdate({ IP: id }, timestamp)
     }
 
-    static async getUser(email) {
+    static async getUserByEmail(email) {
         return await UserModel.findOne({ email });
+    }
+
+    static async getUserById(_id) {
+        return await UserModel.findOne({ _id });
     }
 }
 
